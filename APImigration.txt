@@ -1,0 +1,111 @@
+1) DataBases list
+	url: /Access?method=getDataBases
+		 /Excel?method=getDataBases
+		 /MySql?method=getDataBases
+		 /PostgreSql?method=getDataBases
+		 /Txt?method=getDataBases
+	method: GET
+	return: json({
+				databases: [],
+				status: 200
+			})
+			json({
+				status: 500,
+				message: Internal Server error
+			})
+
+2) Connection with Properties
+	url: /Access?method=connectProp
+		 /MySql?method=connectProp
+		 /PostgreSql?method=connectProp
+		 /Excel?method=connectProp
+		 /Txt?method=connectProp
+	parameter: url (.properties) //Todos Excepto Access, Excel
+	method: POST
+	return: json({
+				message: connection Successfully,
+				status: 200
+			})
+			json({
+				message: connection bad,
+				status: 500
+			})
+
+3) Connection with Params
+	url: /Access?method=connectParam
+		 /MySql?method=connectParam
+		 /PostgreSql?method=connectParam
+		 /Excel?method=connectParam
+	parameters: 
+		Access - Excel: url
+		Txt: url, folder
+		PostgreSql - MySql: host [string], port [string], db[string], user[string], password[string]
+	method: POST
+	return: json({
+				message: connection Successfully,
+				status: 200
+			})
+			json({
+				message: connection bad,
+				status: 500
+			})
+
+4) Tables list
+	url: /Access?method=getTables
+		 /MySql?method=getTables
+		 /PostgreSql?method=getTables
+		 /Excel?method=getTables
+		 /Txt?method=getTables
+	method: GET
+	return:  json({
+				tables: [],
+				status: 200
+			})
+			json({
+				status: 500,
+				message: Internal Server error
+			})
+
+5) Columns Name and Columns Type
+	url: /Access?method=getInfoColumns&table=
+		 /MySql?method=getInfoColumns&table=
+		 /PostgreSql?method=getInfoColumns&table=
+		 /Excel?method=getInfoColumns&table=
+		 /Txt?method=getInfoColumns
+	method: GET
+	return: json({
+				infoColumns: [],
+				status: 200
+			})
+			json({
+				status: 500,
+				message: Internal Server error
+			})
+
+6) Data
+	url: /Access?method=getData&table=
+		 /MySql?method=getData&table=
+		 /PostgreSql?method=getData&table=
+		 /Excel?method=getData&table=
+		 /Txt?method=getData
+	method: GET
+	return: json({
+				data: [],
+				status: 200
+			})
+			json({
+				status: 500,
+				message: Internal Server error
+			})
+
+7) Desconnect
+	url: /Access?method=desconnect
+		 /MySql?method=desconnect
+		 /PostgreSql?method=desconnect
+	method: GET
+	return: json({
+				status: 200
+			})
+			json({
+				status: 500
+			})
